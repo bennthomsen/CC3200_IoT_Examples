@@ -10,11 +10,6 @@ BMA222 accSensor;            // Three axis acceleration sensor
 #include <Wire.h>
 #include "Adafruit_TMP006.h"
 Adafruit_TMP006 tmp006(0x41);
-char deg = 248;
-
-//Include libraries required for Button event and create instance
-#include "Button.h"
-Button button1(PUSH1);
 
 // Setup function runs once when microprocessor is powered up
 void setup() {
@@ -32,8 +27,6 @@ void setup() {
   Serial.print("ChipID: ");
   Serial.println(chipID);
 
-//Start button listener  
-  button1.begin();
 }
 
 // Main loop. Runs continuously
