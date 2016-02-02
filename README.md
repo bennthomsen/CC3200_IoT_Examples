@@ -1,5 +1,8 @@
 # TI CC3200 IoT Examples
 
+Buttons Example
+This example shows how to use the TI RTOS in Energia to detect and debounce a button press.
+
 CC3200 Sensor test example
 
 A IoT Temperature sensing example using the TI CC3200 and the ThingSpeak IoT cloud service.
