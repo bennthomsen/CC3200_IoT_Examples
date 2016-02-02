@@ -1,6 +1,6 @@
 
 //Required for BMA222 Accelerometer sensor
-#include <BMA222.h>
+#include "BMA222.h"
 
 
 // Define external sensors, inputs and outputs.
@@ -26,6 +26,14 @@ void setup() {
   uint8_t chipID = accSensor.chipID();
   Serial.print("ChipID: ");
   Serial.println(chipID);
+  
+  accSensor.range(RANGE_2G);
+  Serial.println(accSensor.range());
+  
+  accSensor.singleTapInterrupt();
+  pinMode(PUSH1,INPUT);
+  attachInterrupt(PUSH1, acc_int, RISING); // Interrupt is fired whenever button is pressed
+  
 
 }
 
@@ -44,8 +52,17 @@ void loop() {
     Serial.print(accSensor.readYData());
     Serial.print(", Z: ");
     Serial.println(accSensor.readZData());
+    Serial.print("Acc Temp:  ");
+    Serial.println(accSensor.readTemp());
+    Serial.println(accSensor.intStatus(),BIN);
 
-    delay(2000);
+
+    delay(5000);
+}
+
+// Rising edge interrupt function
+void acc_int(){
+  Serial.println("Tap");
 }
 
 
