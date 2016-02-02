@@ -1,13 +1,20 @@
 
 //Required for BMA222 Accelerometer sensor
 #include <BMA222.h>
-//Required for TMP006 Temperature sensor
-#include <Wire.h>
-#include "Adafruit_TMP006.h"
+
 
 // Define external sensors, inputs and outputs.
 BMA222 accSensor;            // Three axis acceleration sensor
+
+//Include libraries required for TMP006 Temperature sensor and create instance
+#include <Wire.h>
+#include "Adafruit_TMP006.h"
 Adafruit_TMP006 tmp006(0x41);
+char deg = 248;
+
+//Include libraries required for Button event and create instance
+#include "Button.h"
+Button button1(PUSH1);
 
 // Setup function runs once when microprocessor is powered up
 void setup() {
@@ -24,22 +31,28 @@ void setup() {
   uint8_t chipID = accSensor.chipID();
   Serial.print("ChipID: ");
   Serial.println(chipID);
+
+//Start button listener  
+  button1.begin();
 }
 
 // Main loop. Runs continuously
 void loop() {
-    Serial.print("Object Temperature: ");
-    Serial.println(tmp006.readObjTempC());
-    Serial.print("Die Temperature: ");
-    Serial.println(tmp006.readDieTempC());
+    Serial.print("Object (Die) Temperature: ");
+    Serial.print(tmp006.readObjTempC());
+    Serial.print((char)176);                //Print degree symbol
+    Serial.print("C (");
+    Serial.print(tmp006.readDieTempC());
+    Serial.print((char)176);                //Print degree symbol
+    Serial.println("C)");
     Serial.print("Acc X: ");
     Serial.print(accSensor.readXData());
-    Serial.print(", Y:");
+    Serial.print(", Y: ");
     Serial.print(accSensor.readYData());
-    Serial.print(", Z:");
+    Serial.print(", Z: ");
     Serial.println(accSensor.readZData());
 
-    delay(1000);
+    delay(2000);
 }
 
 
