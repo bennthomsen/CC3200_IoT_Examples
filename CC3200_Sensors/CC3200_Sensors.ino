@@ -30,11 +30,6 @@ void setup() {
   accSensor.range(RANGE_2G);
   Serial.println(accSensor.range());
   
-  accSensor.singleTapInterrupt();
-  pinMode(PUSH1,INPUT);
-  attachInterrupt(PUSH1, acc_int, RISING); // Interrupt is fired whenever button is pressed
-  
-
 }
 
 // Main loop. Runs continuously
@@ -58,11 +53,6 @@ void loop() {
 
 
     delay(5000);
-}
-
-// Rising edge interrupt function
-void acc_int(){
-  Serial.println("Tap");
 }
 
 
