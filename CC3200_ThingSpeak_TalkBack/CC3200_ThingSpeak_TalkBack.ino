@@ -23,6 +23,7 @@ WiFiClient client;
 
 // Setup function runs once when microprocessor is powered up
 void setup() {
+  pinMode(LED,OUTPUT);
   uint8_t macOctets[6]; 
   Serial.begin(115200);          //Initialise serial port for local monitoring on the Serail Monitor via USB
   Serial.print("Attempting to connect to Network named: ");
