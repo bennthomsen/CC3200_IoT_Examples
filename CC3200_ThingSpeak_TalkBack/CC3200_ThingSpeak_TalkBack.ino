@@ -1,19 +1,18 @@
 // Include external libraries
-
 #include <WiFi.h>
-
-
 #define LED RED_LED
 
 // Wireless network parameters
-char ssid[] = "XXX";         // Your wireless network name also called SSID
-char password[] = "XXX";       // Your wireless network password
+char ssid[] = "XXXXXXXXX";         // Your wireless network name also called SSID
+char password[] = "XXXXXXXX";       // Your wireless network password
+
+// ThingSpeak parameters
+char talkBackAPIKey[] = "XXXXXXXXXX";     // TalkBack API Key
+char talkBackID[] = "XXXX";         // TalkBack ID
 
 char thingSpeakAddress[] = "api.thingspeak.com";
-char talkBackAPIKey[] = "XXXX";
-char talkBackID[] = "XXXX";
-
 const unsigned long postingInterval = 15L * 1000L; // delay between updates, in milliseconds
+
 
 char deviceId[] = "xxxxxxxxxxxx";
 
