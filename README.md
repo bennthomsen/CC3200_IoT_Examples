@@ -16,3 +16,6 @@ The example code publishes to the following fields:
 * field1 = deviceID
 * field2 = Object Temperature
 * field3 = Device Temperature
+
+##CC3200 ThinkSpeak TalkBack
+An example showing the use of the ThingSpeak TalkBack to queue commands for the TI CC3200. For details on setting up a TalkBack see https://bennthomsen.wordpress.com/iot/iot-things/ti-cc3200-launchpad/sending-commands-to-device/
