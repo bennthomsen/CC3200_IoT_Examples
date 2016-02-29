@@ -26,10 +26,6 @@ void setup() {
   uint8_t chipID = accSensor.chipID();
   Serial.print("ChipID: ");
   Serial.println(chipID);
-  
-  accSensor.range(RANGE_2G);
-  Serial.println(accSensor.range());
-  
 }
 
 // Main loop. Runs continuously
@@ -47,9 +43,6 @@ void loop() {
     Serial.print(accSensor.readYData());
     Serial.print(", Z: ");
     Serial.println(accSensor.readZData());
-    Serial.print("Acc Temp:  ");
-    Serial.println(accSensor.readTemp());
-    Serial.println(accSensor.intStatus(),BIN);
 
 
     delay(5000);

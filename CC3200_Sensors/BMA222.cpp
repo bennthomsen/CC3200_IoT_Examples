@@ -53,14 +53,6 @@ int8_t BMA222::readReg(uint8_t reg)
 	return 0;
 }
 
-// Writes a single byte (dataToWrite) into reg
-void BMA222::writeReg(uint8_t reg, uint8_t dataToWrite)
-{
-  Wire.beginTransmission(i2cAddr);
-  Wire.write(reg);
-  Wire.write(dataToWrite);
-  Wire.endTransmission(); //Stop transmitting
-}
 
 void BMA222::begin()
 {
@@ -87,28 +79,3 @@ int16_t BMA222::readZData()
 	return readReg(BMA222_ACC_DATA_Z);
 }
 
-double BMA222::readTemp()
-{
-    return 0.5*readReg(BMA222_TEMP)+24.0;
-}
-
-uint8_t BMA222::intStatus()
-{
-	return (uint8_t )readReg(BMA222_INT_STATUS);
-}
-
-uint8_t BMA222::range()
-{
-	return (uint8_t )readReg(BMA222_RANGE);
-}
-
-void BMA222::range(uint8_t range)
-{
-	writeReg(BMA222_RANGE,range);
-}
-
-void BMA222::singleTapInterrupt()
-{
-        writeReg(BMA222_INT_0,s_tap_enable);
-        writeReg(BMA222_INT_PINMAP,int1_s_tap);
-}
