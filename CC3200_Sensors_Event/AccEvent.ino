@@ -5,14 +5,14 @@
 #include "rtosGlobals.h"
 #include "Event.h"
 
-void serial_Setup()
+void setup_serial()
 {
   Serial.begin(115200);
   delay(500);
 }
 
 
-void serial_Loop()
+void loop_serial()
 {
   myEvent.waitFor();
   Serial.println("Tap");
