@@ -1,8 +1,9 @@
 /*
 CC3200      LCD
 VCC -------- VCC
+RST -------- RST
 P01 -------- SCL
-P00 -------- SDA
+P02 -------- SDA
 VCC -------- BL
 GND -------- VSS
 
