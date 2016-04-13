@@ -1,11 +1,16 @@
 
 //Required for BMA222 Accelerometer sensor
 #include "BMA222.h"
+#include "LCD16x2.h"
 
 
 // Define external sensors, inputs and outputs.
 BMA222 accSensor;            // Three axis acceleration sensor
 
+LCD16x2 mylcd;
+const char ADCLCDSTRING[] = "ADC: %i\r\n";
+// DO NOT Exceed 1.5V on the analogue input pin
+#define ANALOGPIN 6     // Labelled P59 on CC3200 Lauchpad.
 //Include libraries required for TMP006 Temperature sensor and create instance
 #include <Wire.h>
 #include "Adafruit_TMP006.h"
@@ -26,10 +31,16 @@ void setup() {
   uint8_t chipID = accSensor.chipID();
   Serial.print("ChipID: ");
   Serial.println(chipID);
+  
+  mylcd.begin(0x3E);
+  mylcd.writeString(0,0,"Hello");
 }
 
 // Main loop. Runs continuously
 void loop() {
+    char string[9];
+  // DO NOT Exceed 1.5V on the analogue input pin
+    sprintf(string, ADCLCDSTRING, analogRead(ANALOGPIN));
     Serial.print("Object (Die) Temperature: ");
     Serial.print(tmp006.readObjTempC());
     Serial.print((char)176);                //Print degree symbol
@@ -42,10 +53,12 @@ void loop() {
     Serial.print(", Y: ");
     Serial.print(accSensor.readYData());
     Serial.print(", Z: ");
-    Serial.println(accSensor.readZData());
+    Serial.print(accSensor.readZData());
+    Serial.print(string);
+    
+    mylcd.writeString(1,0,string);
 
-
-    delay(5000);
+  delay(5000);
 }
 
 
